@@ -2,10 +2,8 @@
 Name        : Nur Islam
 Email       : nurislam0333@gmail.com
 University  : North South University (NSU)
-Facebook    : nur.islam.503
-Copyright © 2017 Nur Islam. All rights reserved.
 ==================================================================*/
-        //STATUS : TLE
+
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -40,7 +38,7 @@ using namespace std;
 #define Check(N,cur) (!((N&(1LL<<cur))==0))
 
 
-//if u using fast_cin then use only cin/cout don't mix with (scanf/printf)
+//if u using fast_cin then use only cin/cout don't use both (scanf/printf)
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL)
 #define nl printf("\n")
 #define phl cerr<<"hello\n"
@@ -67,7 +65,6 @@ using namespace std;
                priority_queue overloded:
 top value will be less than others
 priority_queue<int , vector<int> , greater<int > > LowestValue;
-
 top value will be greater than others
 priority_queue<int , vector<int> , less<int > > MaxValue;
 //====================================================================
@@ -111,11 +108,11 @@ const LL inf = 2147383647;
 const LL mod = 1e9 + 7;
 const double pi = 2 * acos ( 0.0 );
 const double eps = 1e-9;
-const int Size = 30000;
+const int SIZE = 30000;
 ///=========================  TEMPLATE ENDS HERE  ========================///
 
 int N, Q;
-int Tree[Size+10];
+int Tree[SIZE+10];
 int ans[200000+10];
 map <int, int> Map;
 
@@ -139,8 +136,6 @@ bool operator<(Number a, Number b){
     return false;
 }
 vector < Number > V;
-
-//=======================================
 
 
 void Update(int idx, int val)
@@ -178,14 +173,14 @@ int main () {
     QuerySort QS;
     Number NB;
 
-    for(int i = 1; i <= N; i++){
+    for(int i = 1; i <= N; i++) {
         scanf("%d",&x);
         NB.num = x;
         NB.index = i;
         V.push_back(NB);
     }
     sort(V.begin(), V.end());
-
+ /*
     int id = 0;
     for(int i = 0; i < N; i++){
         NB = V[i];
@@ -193,18 +188,19 @@ int main () {
         if(Map.find(x) == Map.end()) Map[x] = ++id;
     }
 
-
+ */
     scanf("%d",&Q);
     for(int i = 1; i <= Q; i++)
     {
         scanf("%d %d %d",&x, &y, &k);
         QS.start = x;
         QS.end   = y;
-        QS.val   = Map[k];
+        QS.val   = k;
         QS.qNO   = i;
         qRange.push_back(QS);
     }
     sort(qRange.begin(), qRange.end());
+
 
     int j = V.size() - 1;
     for(int i = 0; i < Q; i++)
@@ -213,15 +209,11 @@ int main () {
         k = QS.val;
 
         // Update
-        NB = V[j];
-        x = NB.num;
-        x = Map[x];
+        x = V[j].num;
         while(x > k && j >= 0){
-            Update(NB.index, 1);
+            Update(V[j].index, 1);
             j--;
-            NB = V[j];
-            x = NB.num;
-            x = Map[x];
+            x = V[j].num;
         }
 
         //query
@@ -236,86 +228,3 @@ int main () {
 
     return 0;
 }
-
-
-
-/*
-//============================ Segment Tree ===============================//
-//============================== TLE CODE =================================//
-//================ Complexity  ===============//
-
-
-int N , Q;
-int number[Size+10];
-
-struct TREE{
-    vector < int > V;
-};
-TREE tree[100000*4];
-
-
-void build_segment_tree(int node, int a, int b)
-{
-    if(a == b){
-        tree[node].V.push_back(number[a]);
-        return;
-    }
-
-    int left  = (node*2);
-    int right = (node*2)+1;
-    int mid   = (a+b)/2;
-
-    build_segment_tree(left, a, mid);
-    build_segment_tree(right, mid+1, b);
-
-    tree[node].V.resize(tree[left].V.size() + tree[right].V.size());
-    vMERGE(tree[left].V, tree[right].V, tree[node].V);
-}
-
-
-int query(int node, int a, int b, int i, int j, int k)
-{
-    if(i > b || j < a) return 0;
-    if(i <= a && j >= b){
-        int UpperBound = UB(tree[node].V, k); //cout << "up = " << UpperBound << endl;
-        int greaterThanK = tree[node].V.size() - (UpperBound);
-        return greaterThanK;
-    }
-
-    int left  = (node*2);
-    int right = (node*2)+1;
-    int mid   = (a+b)/2;
-
-    int q1 = 0, q2 = 0;
-    q1 += query(left, a, mid, i, j, k);
-    q2 += query(right, mid+1, b, i, j, k);
-
-    return (q1+q2);
-}
-
-
-int main () {
-    #ifdef forthright48
-    /// freopen ( "input.txt", "r", stdin );
-    /// freopen ( "output.txt", "w", stdout );
-    #endif // forthright48
-
-    scanf("%d",&N);
-    for(int i = 1; i <= N; i++){
-        scanf("%d",&number[i]);
-    }
-    build_segment_tree(1, 1, N);
-    scanf("%d",&Q);
-    for(int i = 1; i <= Q; i++)
-    {
-        int x, y, k;
-        scanf("%d %d %d",&x, &y, &k);
-
-        int ans = query(1, 1, N, x, y, k);
-        printf("%d\n",ans);
-    }
-
-
-    return 0;
-}
-*/
