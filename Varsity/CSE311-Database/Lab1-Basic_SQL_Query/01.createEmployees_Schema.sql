@@ -1,4 +1,4 @@
-CREATE INTO Employees(
+CREATE Table Employees(
     EMPLOYEE_ID int,
     FIRST_NAME Varchar,
     LAST_NAME Varchar,
