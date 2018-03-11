@@ -1,4 +1,5 @@
 
+
 CREATE TABLE Employees(
     EMPLOYEE_ID int,
     FIRST_NAME Varchar(20),
