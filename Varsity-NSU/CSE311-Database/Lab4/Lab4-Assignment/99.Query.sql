@@ -22,7 +22,12 @@ Where (
 
 /* d. Write a SQL statement to display all the customers,
 who are either belongs to your home town or not had a grade above 100. */
-
+Select *
+From Customers
+Where (
+    Location = 'Bogra' AND
+    Grade <= 100
+)
 
 /* e. Write a SQL query to display those customers
 who are neither belongs to the city New York nor grade value is more than 100. */
