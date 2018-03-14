@@ -31,7 +31,7 @@ Where email IS NULL
 //2. b:
 Select Id, name, street, city
 From Student
-Where email LIKE '%gmail.com'
+Where email LIKE '%@gmail.com'
 
 //2. c:
 Select email as Email, count(Id) as number_of_Student
@@ -47,7 +47,7 @@ Group by city, street
 //2. e:
 Select SUM(S.Fee_paid), MAX(S.Fee_paid), MIN(S.Fee_paid), AVG(S.Fee_paid)
 From Student S, Takes T
-Where T.year = 2016
+Where T.year = 2016 and T.id = S.id
 Group by S.city, S.street
 
 //2. f:
