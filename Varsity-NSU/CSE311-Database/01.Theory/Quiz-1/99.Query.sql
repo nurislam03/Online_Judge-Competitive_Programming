@@ -11,7 +11,7 @@ Where Id between 1111 and 6666
 //1. c:
 Select S.Id, S.name, T.course_id
 From Student S, Takes T
-Where T.year = 2016
+Where T.year = 2000 AND S.id = T.id
 
 //1. d:
 Select S.Id, S.name, T.course_id, C.title, T.year
