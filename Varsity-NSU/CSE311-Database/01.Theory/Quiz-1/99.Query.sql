@@ -34,7 +34,9 @@ From Student
 Where email LIKE '%gmail.com'
 
 //2. c:
-Select
+Select email as Email, count(Id) as number_of_Student
+From Student
+Group by email
 
 
 //2. d:
