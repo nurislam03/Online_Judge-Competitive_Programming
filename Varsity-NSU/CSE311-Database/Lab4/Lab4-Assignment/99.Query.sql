@@ -33,7 +33,7 @@ Where (
 who are neither belongs to the city New York nor grade value is more than 100. */
 Select *
 From Customers
-Where (Location, Grade) NOT IN (
+Where NOT (
     Location = 'New York' AND
     Grade > 100
 )
@@ -44,7 +44,8 @@ issued by the salesman whose ID is 505 and below or
 those orders which purchase amount is 1000.00 and below. */
 Select *
 From Customers
-Where (Location, Grade) IN (
+Where IN (
+    ( Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' )
     Location = 'New York' AND
     Grade > 100
 )
