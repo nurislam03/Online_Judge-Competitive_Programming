@@ -1,3 +1,27 @@
+
+//1. a:
+Select distinct city
+From Student
+
+//1. b:
+Select city
+From Student
+Where Id between 1111 and 6666
+
+//1. c:
+Select S.Id, S.name, T.course_id
+From Student S, Takes T
+Where T.year = 2016
+
+//1. d:
+Select S.Id, S.name, T.course_id, C.title, T.year
+From Student S, Takes T, Course C
+Where C.credit_hour = 3
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
 // 2. a:
 Select Id, name, street, city
 From Student
@@ -38,4 +62,10 @@ Group by S.city, S.street
 
 //2. h:
 Select GPA
-From 
+From
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
