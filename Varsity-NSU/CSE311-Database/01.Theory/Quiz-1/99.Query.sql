@@ -61,6 +61,7 @@ Select max(S.CGPA), min(S.CGPA), avg(S.CGPA)
 From Student S, Takes T
 Where T.year = 2016
 Group by S.city, S.street
+having min(S.CGPA) > 2
 
 //2. h:
 Select GPA
