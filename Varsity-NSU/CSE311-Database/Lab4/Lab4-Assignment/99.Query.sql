@@ -46,7 +46,8 @@ Select *
 From Customers
 Where IN (
     ( Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' ) and
-    Salesmans_Id < 504
+    Salesmans_Id < 504 and
+    Purchase_Amount < 999
 )
 
 /* g. Write a SQL statement where to display name of salesman, join date in a ascending order
@@ -64,7 +65,12 @@ Where (C.Salesman_Id = S.Id)
 
 /* i. Display all in reverse, where customer id greater than 2005 and purchase amount is below 1000
 and they are not from your home town. */
-
+Select *
+From
+Where (
+    (id > 2005 and Purchase_Amount < 1000 ) and
+    NOT ()
+)
 
 /* j. Write a query in SQL to find the data of Customer whose name start with A and
 the name length at least 4 Character and they use Banglalink or GrameenPhone or Teletalk
