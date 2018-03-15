@@ -1,14 +1,3 @@
-Create Table Customers(
-    Id int,
-    Name varchar(40),
-    Location varchar(50),
-    Cell_number varchar(15),
-    Email varchar(50),
-    Grade double,
-    Purchase_Amount double,
-    Salesman_Id int
-)
-
 Insert Into Customers(Id, Name, Location, Cell_number, Email, Grade, Purchase_Amount, Salesman_Id)
 Values(0001, 'Nur', 'Bogra', '+8801742489777', 'nur@gmail.com', 240, 1000, 505),
 (0002, 'Tasnuva', 'Dhaka', '+8801932457324', 'Tasnuva@gmail.com', 440, 2000, 504),
