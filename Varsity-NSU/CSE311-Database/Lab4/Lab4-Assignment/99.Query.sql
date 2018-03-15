@@ -26,7 +26,7 @@ Select *
 From Customers
 Where (
     Location = 'Bogra' AND
-    Grade <= 100
+    Grade < 101
 )
 
 /* e. Write a SQL query to display those customers
@@ -45,13 +45,15 @@ those orders which purchase amount is 1000.00 and below. */
 Select *
 From Customers
 Where IN (
-    ( Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' )
-    Location = 'New York' AND
-    Grade > 100
+    ( Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' ) and
+    Salesmans_Id < 504
 )
 
 /* g. Write a SQL statement where to display name of salesman, join date in a ascending order
 and the commission they (Salesman) get based on their salary. Commission – 4% */
+Select Name, Join_Date, SUM(Salary*4/100) as commission
+From Salesmans
+Order by Join_Date ASC
 
 
 /* h. Write a SQL statement where to display the customer name
