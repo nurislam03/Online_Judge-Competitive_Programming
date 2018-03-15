@@ -59,7 +59,7 @@ Group by S.city, S.street
 //2. g:
 Select max(S.CGPA), min(S.CGPA), avg(S.CGPA)
 From Student S, Takes T
-Where T.year = 2016
+Where T.year = 2016 and S.id = T.id
 Group by S.city, S.street
 having min(S.CGPA) > 2
 
