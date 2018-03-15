@@ -13,4 +13,4 @@ Values(0001, 'Nur', 'Bogra', '+8801742489777', 'nur@gmail.com', 240, 1000, 505),
 (0012, 'Maksuda', 'Chittagong', '+8801542483456', 'Maksuda@gmail.com', 333, 4100, 111),
 (0013, 'Anika', 'Khulna', '+8801742489777', 'Anika@gmail.com', 456, 8970, 222),
 (0014, 'Priom', 'Rajshahi', '+8801642489777', 'Priom@gmail.com', 469, 3450, 333),
-(0015, 'Alisha', 'Bogra', '+8801742489777', 'Alisha@gmail.com', 378, 1000, 444)
+(0015, 'Alisha', 'New York', '+8801742489777', 'Alisha@gmail.com', 378, 1000, 444)

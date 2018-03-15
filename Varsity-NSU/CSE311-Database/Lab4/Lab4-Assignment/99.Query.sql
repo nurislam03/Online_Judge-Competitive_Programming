@@ -34,7 +34,7 @@ who are neither belongs to the city New York nor grade value is more than 100. *
 Select *
 From Customers
 Where NOT (
-    Location = 'New York' AND
+    Location = 'New York' OR
     Grade > 100
 )
 
@@ -44,8 +44,8 @@ issued by the salesman whose ID is 505 and below or
 those orders which purchase amount is 1000.00 and below. */
 Select *
 From Customers
-Where IN (
-    ( Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' ) and
+Where (
+    ( Cell_number NOT LIKE '+88019%') and
     Salesmans_Id < 504 and
     Purchase_Amount < 999
 )
@@ -66,11 +66,11 @@ Where (C.Salesman_Id = S.Id)
 /* i. Display all in reverse, where customer id greater than 2005 and purchase amount is below 1000
 and they are not from your home town. */
 Select *
-From
+From Customers
 Where (
-    (id > 2005 and Purchase_Amount < 1000 ) and
-    NOT ()
+    (id > 2005 and Purchase_Amount < 1000 )
 )
+Order by Id DESC
 
 /* j. Write a query in SQL to find the data of Customer whose name start with A and
 the name length at least 4 Character and they use Banglalink or GrameenPhone or Teletalk
