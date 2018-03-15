@@ -1,3 +1,4 @@
+
 Create Table Customers(
     Id int,
     Name varchar(40),

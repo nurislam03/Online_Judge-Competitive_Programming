@@ -1,3 +1,4 @@
+
 Create Table Salesmans(
     Id int,
     Name varchar(40),

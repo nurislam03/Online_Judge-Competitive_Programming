@@ -1,8 +1,10 @@
 
+
 /* a. Write a query to display all customers with a grade above 100. */
 Select *
 From Customers
-Where Grade > 100
+Where (Grade > 100.0)
+
 
 /* b. Write a query statement to display all customers in your home town
 who have a grade value above 100. */
@@ -12,6 +14,7 @@ Where (
     Location = 'Bogra' AND Grade > 100
 )
 
+
 /* c. Write a SQL statement to display all customers, who are either,
 belongs to your home town or had a grade above 100. */
 Select *
@@ -19,6 +22,8 @@ From Customers
 Where (
     Location = 'Bogra' OR Grade > 100
 )
+
+
 
 /* d. Write a SQL statement to display all the customers,
 who are either belongs to your home town or not had a grade above 100. */
@@ -46,15 +51,16 @@ Select *
 From Customers
 Where (
     ( Cell_number NOT LIKE '+88019%') and
-    Salesmans_Id < 504 and
-    Purchase_Amount < 999
+    Salesman_Id < 506 and
+    Purchase_Amount < 1001
 )
 
 /* g. Write a SQL statement where to display name of salesman, join date in a ascending order
 and the commission they (Salesman) get based on their salary. Commission – 4% */
-Select Name, Join_Date, SUM(Salary*4/100) as commission
+Select Name, Join_Date, (Salary*4/100) as commission
 From Salesmans
 Order by Join_Date ASC
+
 
 
 /* h. Write a SQL statement where to display the customer name
@@ -63,14 +69,28 @@ Select C.Name, S.Name
 From Customers C, Salesmans S
 Where (C.Salesman_Id = S.Id)
 
-/* i. Display all in reverse, where customer id greater than 2005 and purchase amount is below 1000
+
+/* i. Display all in reverse, where customer id greater(/less) than 2005 and purchase amount is below(/above) 1000
 and they are not from your home town. */
 Select *
 From Customers
 Where (
-    (id > 2005 and Purchase_Amount < 1000 )
+    (id < 2005 and Purchase_Amount > 1000 )
 )
 Order by Id DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* j. Write a query in SQL to find the data of Customer whose name start with A and
 the name length at least 4 Character and they use Banglalink or GrameenPhone or Teletalk
@@ -79,9 +99,23 @@ Select *
 From Customers
 Where (
     Name LIKE 'A___%' AND
-    ( Cell_number LIKE '+88019%' OR Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%' ) AND
+    (Cell_number LIKE '+88019%' OR Cell_number LIKE '+88017%' OR Cell_number LIKE '+88015%') AND
     Email LIKE '%@gmail.com'
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

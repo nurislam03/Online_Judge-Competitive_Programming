@@ -1,3 +1,4 @@
+
 Insert Into Salesmans(Id, Name, Join_Date, Location, Salary)
 Values(505, 'Rafiq', '2018-03-15', 'Tangail', 20000),
 (504, 'Naim', '1998-03-15', 'Rangpur', 45000),
