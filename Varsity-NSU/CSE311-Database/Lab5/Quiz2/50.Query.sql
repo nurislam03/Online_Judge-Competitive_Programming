@@ -1,4 +1,6 @@
 
+// N.B: This is not the final version.
+
 //1.
 Select A.emp_name as "Name"
 From Employee A
