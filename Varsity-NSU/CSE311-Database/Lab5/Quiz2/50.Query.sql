@@ -1,7 +1,7 @@
 
 // N.B: This is not the final version.
 
-//1.
+// Q1.1
 Select A.emp_name as "Name"
 From Employee A
 Where A.salary > (
@@ -25,7 +25,7 @@ Where (hire_date LIKE '2017%' and E.dept_id = D.dept_id)
 
 ////////////////////////////////////////
 
-//1.
+//Q2.1
 Select S.sname
 From Supliers S, Parts P, Catalog C
 Where (S.sid = C.sid and C.pid = P.pid and P.color = 'red')
