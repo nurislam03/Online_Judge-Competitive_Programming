@@ -1,3 +1,5 @@
+/* test data */
+
 Create Table Supliers(
     sid int,
     sname varchar(40),
