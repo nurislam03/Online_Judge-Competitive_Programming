@@ -2,27 +2,28 @@
 //SQL
 
 Create Table Patient(
-	 patient_id 		  int, 
+	 patient_id 		  int NOT NULL AUTO_INCREMENT, 
 	admission_date		 date,
-	 first_name			  varchar(20), 
+	 first_name			  varchar(20) NOT NULL, 
 	middle_name			 varchar(20), 
 	last_name			 varchar(20), 
-	birth_date			 date,
-	 mobile1			  varchar(20),
+	birth_date			 date NOT NULL,
+	 mobile1			  varchar(20) NOT NULL,
 	 mobile2			  varchar(20),
-	 present_streetnum	  int, 
+	 present_streetnum	  varchar(20), 
 	present_streetname	 varchar(20),
 	 present_area		  varchar(20), 
 	present_thana		 varchar(20), 
 	present_district	 varchar(20), 
-	permanent_streetnum	 int, 
+	permanent_streetnum	 varchar(20), 
 	permanent_streetname varchar(20),
 	 permanent_area		  varchar(20),
 	 permanent_thana	  varchar(20), 
 	permanent_district	 varchar(20),	 
 	profession 			 varchar(20),
-	 amount_deposited	  double, 
-	ward_id 			 int
+	 amount_deposited	  double NOT NULL, 
+	choice 			 	 varchar(30) NOT NULL,
+	PRIMARY KEY (patient_id)
 );
 
 
@@ -30,6 +31,7 @@ Create Table Ward(
 	 ward_id		int,
 	 name			varchar(20)
 ); 
+
 
 Create Table Cabin(
 	cabin_id      int,
@@ -44,7 +46,6 @@ Create Table Bed( 
 	 status			 varchar(20), 
 	ward_id		    int
 );
-
 
 
 Create Table Nurse(
@@ -130,7 +131,6 @@ Create Table Med_prescription(
 	doctor_id		int, 
 	medicine_id		int
 );
-
 
 
 //For multi-values

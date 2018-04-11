@@ -4,6 +4,8 @@ Patient(patient_id,admission_date,first_name,middle_name,last_name,birth_date,mo
 
 Ward(ward_id,name)
 
+Cabin(cabin_id, name)
+
 Bed(bed_id,type,rent,status,ward_id)
 
 Nurse(nurse_id,first_name,middle_name,last_name,birth_date,appointment_date,supervisor_id, ward_id)
