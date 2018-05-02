@@ -1,6 +1,6 @@
 // Entities Relational Schema
 
-Patient(patient_id,admission_date,first_name,middle_name,last_name,birth_date,mobile1,mobile2, present_streetnum,present_streetname,present_area,present_thana,present_district, permanent_streetnum,permanent_streetname,permanent_area,permanent_thana,permanent_district,profession,amount_deposited,ward_id)
+Patient(patient_id,admission_date,first_name,middle_name,last_name,birth_date,mobile1,mobile2, present_streetnum,present_streetname,present_area,present_thana,present_district, permanent_streetnum,permanent_streetname,permanent_area,permanent_thana,permanent_district,profession,amount_deposited, choice, ward_id, cabin_id)
 
 Ward(ward_id,name)
 
@@ -13,6 +13,8 @@ Nurse(nurse_id,first_name,middle_name,last_name,birth_date,appointment_date,supe
 Medicine(medicine_id,name,type,unit_price,quantity,manufacture_date,expiry_date)
 
 Prescription(patient_id,doctor_id,name_med,quantity,times_a_day)
+
+Test_Advice(prescription_id, test_name)
 
 Doctor(doctor_id,first_name,middle_name,last_name,birth_date,appointment_date,specialist,ward_id,registrar_id)
 

@@ -76,7 +76,8 @@ Create Table Prescription( 
 	 doctor_id			int,
 	 name_med			varchar(20),
 	 quantity			int,
-	 times_a_day		int
+	 times_a_day		int,
+	bill               double
 );
 
 
@@ -88,8 +89,19 @@ Create Table Doctor(
 	birth_date			date, 
 	appointment_date	date,
 	 specialist			 varchar(10),
-	 ward_id			 int, 
-	registrar_id		int
+	// ward_id			 int, 
+	//cabin_id			int,
+	registrar_id		int,
+	//Membership1         varchar(30),
+	//Membership2         varchar(30),
+	//Membership3         varchar(30),
+	//Membership4         varchar(30),
+);
+
+
+Create Table Membership(
+	Membership_id int,
+	membership_type varchar(40)
 );
 
 
