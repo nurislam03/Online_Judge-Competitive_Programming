@@ -3,12 +3,12 @@
 
 Create Table Patient(
 	 patient_id 		  int NOT NULL AUTO_INCREMENT, 
-	admission_date		 date,
+	admission_date		 date NOT NULL,
 	 first_name			  varchar(20) NOT NULL, 
 	middle_name			 varchar(20), 
 	last_name			 varchar(20), 
-	birth_date			 date NOT NULL,
-	 mobile1			  varchar(20) NOT NULL,
+	birth_date			 date,
+	 mobile1			  varchar(20),
 	 mobile2			  varchar(20),
 	 present_streetnum	  varchar(20), 
 	present_streetname	 varchar(20),
@@ -28,19 +28,19 @@ Create Table Patient(
 
 
 Create Table Ward(
-	 ward_id		int,
+	 ward_id		int NOT NULL AUTO_INCREMENT,
 	 name			varchar(20)
 ); 
 
 
 Create Table Cabin(
-	cabin_id      int,
+	cabin_id      int NOT NULL AUTO_INCREMENT,
 	name          varchar(20)
 );
 
 
 Create Table Bed( 
-	bed_id			int,
+	bed_id			int NOT NULL AUTO_INCREMENT,
 	 type			 varchar(20),
 	 rent			 double,
 	 status			 varchar(20), 
@@ -49,7 +49,7 @@ Create Table Bed( 
 
 
 Create Table Nurse(
-	 nurse_id		   	 int, 
+	 nurse_id		   	 int NOT NULL AUTO_INCREMENT, 
 	first_name			varchar(20), 
 	middle_name			varchar(20), 
 	last_name			varchar(20), 
@@ -61,7 +61,10 @@ Create Table Nurse(
 
 
 Create Table Medicine(
-	 medicine_id		 int, 
+	supplier_id         int,
+	supplier_name       varchar(30),
+	date_of_supply      Date,
+	 medicine_id		 int NOT NULL AUTO_INCREMENT, 
 	name				varchar(20), 
 	type				varchar(20),
 	 unit_price			 double,
