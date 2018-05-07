@@ -1,6 +1,6 @@
 // Entities Relational Schema
 
-Patient(patient_id,admission_date,first_name,middle_name,last_name,birth_date,mobile1,mobile2, present_streetnum,present_streetname,present_area,present_thana,present_district, permanent_streetnum,permanent_streetname,permanent_area,permanent_thana,permanent_district,profession,amount_deposited, choice, ward_id, cabin_id)
+Patient(patient_id,admission_date,first_name,middle_name,last_name,birth_date,mobile1,mobile2, present_streetnum,present_streetname,present_area,present_thana,present_district, permanent_streetnum,permanent_streetname,permanent_area,permanent_thana,permanent_district,profession,amount_deposited, choice)
 
 Ward(ward_id,name)
 
