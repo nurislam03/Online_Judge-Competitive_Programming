@@ -19,7 +19,7 @@ Create Table Patient(
 	permanent_streetname varchar(20),
 	 permanent_area		  varchar(20),
 	 permanent_thana	  varchar(20), 
-	permanent_district	 varchar(20),	 
+	permanent_district	 varchar(20),
 	profession 			 varchar(20),
 	 amount_deposited	  double NOT NULL, 
 	choice 			 	 varchar(30) NOT NULL,
@@ -28,86 +28,84 @@ Create Table Patient(
 
 
 Create Table Ward(
-	 ward_id		int NOT NULL AUTO_INCREMENT,
-	 name			varchar(20),
-	bed_id         int,
+	ward_id		int NOT NULL AUTO_INCREMENT,
+	name			varchar(20),
+	bed_id         int NOT NULL,
 	PRIMARY KEY (ward_id)
-); 
+);
 
 
 Create Table Cabin(
 	cabin_id      int NOT NULL AUTO_INCREMENT,
 	name          varchar(20),
-	bed_id        int,
+	bed_id        int NOT NULL,
 	PRIMARY KEY (cabin_id)
 );
 
 
-Create Table Bed( 
+Create Table Bed(
 	bed_id			int NOT NULL AUTO_INCREMENT,
-	 type			 varchar(20),
-	 rent			 double,
-	 status			 varchar(20), 
+	type			 varchar(20),
+	rent			 double NOT NULL,
+	status			 varchar(20),
+	nurse_id        int,
 	choice		    varchar(20),
 	PRIMARY KEY (bed_id)
 );
 
 
 Create Table Nurse(
-	 nurse_id		   	 int NOT NULL AUTO_INCREMENT, 
-	first_name			varchar(20), 
-	middle_name			varchar(20), 
-	last_name			varchar(20), 
-	birth_date			date, 
-	appointment_date	date, 
-	supervisor_id		int, 
-	ward_id				int
+	nurse_id		   	 int NOT NULL AUTO_INCREMENT,
+	first_name			varchar(20),
+	middle_name			varchar(20),
+	last_name			varchar(20),
+	birth_date			date,
+	appointment_date	date,
+	supervisor_id		int,
+	ward_id				int,
+	PRIMARY KEY (nurse_id)
 );
 
 
 Create Table Medicine(
- 	 medicine_id		 int NOT NULL AUTO_INCREMENT, 
+	medicine_id		 int NOT NULL AUTO_INCREMENT,
 	supplier_id         int,
 	supplier_name       varchar(30),
 	date_of_supply      Date,
-	name				varchar(20), 
+	name				varchar(20),
 	type				varchar(20),
-	 unit_price			 double,
-	 quantity			 int, 
-	manufacture_date	date, 
-	expiry_date			date
+	unit_price			 double NOT NULL,
+	quantity			 int NOT NULL,
+	manufacture_date	date,
+	expiry_date			date,
+	PRIMARY KEY (medicine_id)
 );
 
 
-Create Table Prescription( 
+Create Table Prescription(
 	prescription_id    int NOT NULL AUTO_INCREMENT,
-	patient_id		   int,
-	 doctor_id			int,
+	patient_id		   int NOT NULL,
+	doctor_id			int NOT NULL,
 	PRIMARY KEY(prescription_id)
 );
 
 
 Create Table Doctor(
-	 doctor_id			 int, 
-	first_name			varchar(20), 
-	middle_name			varchar(20),	 
-	last_name			varchar(20), 
-	birth_date			date, 
+	doctor_id			 int NOT NULL AUTO_INCREMENT,
+	first_name			varchar(20),
+	middle_name			varchar(20),
+	last_name			varchar(20),
+	birth_date			date,
 	appointment_date	date,
-	 specialist			 varchar(10),
-	// ward_id			 int, 
-	//cabin_id			int,
-	registrar_id		int,
-	//Membership1         varchar(30),
-	//Membership2         varchar(30),
-	//Membership3         varchar(30),
-	//Membership4         varchar(30),
+	PRIMARY KEY(doctor_id)
 );
 
 
 Create Table Membership(
-	Membership_id int,
-	membership_type varchar(40)
+	membership_id int NOT NULL AUTO_INCREMENT,
+	doctor_id     int NOT NULL,
+	membership_type varchar(40),
+	PRIMARY KEY(membership_id)
 );
 
 
@@ -140,8 +138,8 @@ CREATE Table Patient_info(
 CREATE TABLE Test(
 	test_id          int NOT NULL AUTO_INCREMENT,
 	prescription_id  int,
-	patient_id       int,
-	doctor_id        int,
+	patient_id       int NOT NULL,
+	doctor_id        int NOT NULL,
 	test_name        varchar(30),
 	test_no          int,
 	PRIMARY KEY(test_id)
@@ -150,16 +148,17 @@ CREATE TABLE Test(
 
 //For relationships
 Create Table Admit(
-	 patient_id 	int,
-	 bed_id			int
+	patient_id 	int NOT NULL,
+	bed_id			int NOT NULL,
+	PRIMARY KEY(patient_id)
 );
 
 
 Create Table Med_prescription(
-	prescription_id int,
-	 patient_id		 int, 
-	doctor_id		int, 
-	medicine_id		int,
+	prescription_id int NOT NULL,
+	 patient_id		 int NOT NULL, 
+	doctor_id		int NOT NULL, 
+	medicine_id		int NOT NULL,
 	name_med		   varchar(20),
 	 quantity			int,
 	 times_a_day		int,
@@ -172,43 +171,50 @@ Create Table Med_prescription(
 
 
 
-
-
 //For multi-values
-Creat Table Doc_educational_qualification(
-	 doctor_id 		int,
-	 degree 		varchar(20), 
-	institute	   varchar(20), 
-	year1		   int, 
+Create Table Doc_educational_qualification(
+	doc_qualification_id int NOT NULL AUTO_INCREMENT,
+	doctor_id 		int NOT NULL,
+	degree 		varchar(20),
+	institute	   varchar(20),
+	year1		   int,
 	cgpa		   double,
-	position       int
+	position       int,
+	PRIMARY KEY(doc_qualification_id)
 );
 
 
-Creat Table Doc_experience( 
-	doctor_id		int, 
+Create Table Doc_experience(
+	doc_experience_id      int NOT NULL AUTO_INCREMENT,
+	doctor_id		int NOT NULL,
 	job_title		varchar(20),
-	 from1		   	 date, 
-	to1			    date, 
-	organization	varchar(20)
+	from1		   	 date,
+	to1		        date,
+	organization	varchar(20),
+	PRIMARY KEY(doc_experience_id)
 );
 
 
-Creat Table Nurse_educational_qualification( 
-	nurse_id 		int,
-	 degree 		 varchar(20),
-	 institute		 varchar(20), 
+Create Table Nurse_educational_qualification(
+	nurse_qualification_id  int NOT NULL AUTO_INCREMENT,
+	nurse_id 		int NOT NULL,
+	degree 		 varchar(20),
+	institute		 varchar(20),
 	year1		    int,
-	 cgpa			 double
+	cgpa			 double,
+	position        varchar(10),
+	PRIMARY KEY(nurse_qualification_id)
 );
 
 
-Creat Table Nurse_experience( 
-	nurse_id		int, 
+Create Table Nurse_experience(
+	nurse_experience_id      int NOT NULL AUTO_INCREMENT,
+	nurse_id		int NOT NULL,
 	job_title		varchar(20),
-	 from1		 	 date, 
-	to1			    date, 
-	organization	varchar(20)
+	from1		 	 date,
+	to1			    date,
+	organization	varchar(20),
+	PRIMARY KEY(nurse_experience_id)
 );
 
 
