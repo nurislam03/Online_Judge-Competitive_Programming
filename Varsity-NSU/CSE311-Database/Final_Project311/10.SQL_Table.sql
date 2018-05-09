@@ -29,13 +29,17 @@ Create Table Patient(
 
 Create Table Ward(
 	 ward_id		int NOT NULL AUTO_INCREMENT,
-	 name			varchar(20)
+	 name			varchar(20),
+	bed_id         int,
+	PRIMARY KEY (ward_id)
 ); 
 
 
 Create Table Cabin(
 	cabin_id      int NOT NULL AUTO_INCREMENT,
-	name          varchar(20)
+	name          varchar(20),
+	bed_id        int,
+	PRIMARY KEY (cabin_id)
 );
 
 
@@ -44,7 +48,8 @@ Create Table Bed( 
 	 type			 varchar(20),
 	 rent			 double,
 	 status			 varchar(20), 
-	ward_id		    int
+	choice		    varchar(20),
+	PRIMARY KEY (bed_id)
 );
 
 
@@ -61,10 +66,10 @@ Create Table Nurse(
 
 
 Create Table Medicine(
+ 	 medicine_id		 int NOT NULL AUTO_INCREMENT, 
 	supplier_id         int,
 	supplier_name       varchar(30),
 	date_of_supply      Date,
-	 medicine_id		 int NOT NULL AUTO_INCREMENT, 
 	name				varchar(20), 
 	type				varchar(20),
 	 unit_price			 double,
@@ -75,12 +80,10 @@ Create Table Medicine(
 
 
 Create Table Prescription( 
+	prescription_id    int NOT NULL AUTO_INCREMENT,
 	patient_id		   int,
 	 doctor_id			int,
-	 name_med			varchar(20),
-	 quantity			int,
-	 times_a_day		int,
-	bill               double
+	PRIMARY KEY(prescription_id)
 );
 
 
@@ -108,30 +111,41 @@ Create Table Membership(
 );
 
 
-Creat Table Patient_info(
-	 patient_id		 int, 
-	height			double, 
-	weight			double,
-	 symptom1		 varchar(20),
-	 symptom2		 varchar(20), 
-	symptom3		varchar(20), 
-	symptom4		varchar(20), 
-	low_bp			int, 
-	high_bp		    int, 
-	bk1				varchar(20), 
-	bk2				varchar(20),
-	 bk3			 varchar(20), 
-	lh1				varchar(20), 
-	lh2				varchar(20),
-	 lh3			 varchar(20),
-	 dn1			 varchar(20), 
-	dn2				varchar(20),
-	 dn3			 varchar(20),
-	 hobby_game		 varchar(20), 
-	hobby_others	varchar(20),
-	 disease		 varchar(20)
+CREATE Table Patient_info(
+	patient_id int NOT NULL,
+	height double,
+	weight double,
+	symptom1 varchar(20),
+	symptom2 varchar(20),
+	symptom3 varchar(20),
+	low_bp int,
+	high_bp int,
+	breakfastk1 varchar(20),
+	breakfastk2 varchar(20),
+	breakfastk3 varchar(20),
+	lunch1 varchar(20),
+	lunch2 varchar(20),
+	lunch3 varchar(20),
+	dinner1 varchar(20),
+	dinner2 varchar(20),
+	dinner3 varchar(20),
+	hobby_game varchar(20),
+	hobby_others varchar(20),
+	disease varchar(20),
+	doctor_id int NOT NULL,
+	PRIMARY KEY (patient_id)
 );
 
+
+CREATE TABLE Test(
+	test_id          int NOT NULL AUTO_INCREMENT,
+	prescription_id  int,
+	patient_id       int,
+	doctor_id        int,
+	test_name        varchar(30),
+	test_no          int,
+	PRIMARY KEY(test_id)
+);
 
 
 //For relationships
@@ -142,10 +156,22 @@ Create Table Admit(
 
 
 Create Table Med_prescription(
+	prescription_id int,
 	 patient_id		 int, 
 	doctor_id		int, 
-	medicine_id		int
+	medicine_id		int,
+	name_med		   varchar(20),
+	 quantity			int,
+	 times_a_day		int,
+	morning            varchar(20),
+	noon               varchar(20),
+	evening            varchar(20),
+	med_cost           double,
+	PRIMARY KEY(prescription_id)
 );
+
+
+
 
 
 //For multi-values

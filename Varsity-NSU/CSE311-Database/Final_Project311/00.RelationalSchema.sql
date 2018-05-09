@@ -18,7 +18,8 @@ Test_Advice(prescription_id, test_name)
 
 Doctor(doctor_id,first_name,middle_name,last_name,birth_date,appointment_date,specialist,ward_id,registrar_id)
 
-Patient_info(patient_id,height,weight,symptom1,symptom2,symptom3,symptom4,low_bp,high_bp,bk1,bk2,bk3,lh1,lh2,lh3,dn1,dn2,dn3,hobby_game,hobby_others,disease)
+
+Patient_info(patient_id,height,weight,symptom1,symptom2,symptom3,low_bp,high_bp,breakfastk1,breakfastk2, breakfastk3,lunch1,lunch2, lunch3, dinner1,dinner2,dinner3,hobby_game,hobby_others,disease,doctor_id)
 
 
 
