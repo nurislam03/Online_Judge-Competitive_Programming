@@ -2,26 +2,26 @@
 //SQL
 
 Create Table Patient(
-	 patient_id 		  int NOT NULL AUTO_INCREMENT, 
+	patient_id 		  int NOT NULL AUTO_INCREMENT,
 	admission_date		 date NOT NULL,
-	 first_name			  varchar(20) NOT NULL, 
-	middle_name			 varchar(20), 
-	last_name			 varchar(20), 
+	first_name			  varchar(20) NOT NULL,
+	middle_name			 varchar(20),
+	last_name			 varchar(20),
 	birth_date			 date,
-	 mobile1			  varchar(20),
-	 mobile2			  varchar(20),
-	 present_streetnum	  varchar(20), 
+	mobile1			  varchar(20),
+	mobile2			  varchar(20),
+	present_streetnum	  varchar(20),
 	present_streetname	 varchar(20),
-	 present_area		  varchar(20), 
-	present_thana		 varchar(20), 
-	present_district	 varchar(20), 
-	permanent_streetnum	 varchar(20), 
+	present_area		  varchar(20),
+	present_thana		 varchar(20),
+	present_district	 varchar(20),
+	permanent_streetnum	 varchar(20),
 	permanent_streetname varchar(20),
-	 permanent_area		  varchar(20),
-	 permanent_thana	  varchar(20), 
+	permanent_area		  varchar(20),
+	permanent_thana	  varchar(20),
 	permanent_district	 varchar(20),
 	profession 			 varchar(20),
-	 amount_deposited	  double NOT NULL, 
+	amount_deposited	  double NOT NULL,
 	choice 			 	 varchar(30) NOT NULL,
 	PRIMARY KEY (patient_id)
 );
@@ -42,6 +42,13 @@ Create Table Cabin(
 	PRIMARY KEY (cabin_id)
 );
 
+Create Table Cabin(
+	cabin_id      int NOT NULL AUTO_INCREMENT,
+	name          varchar(20),
+	cabin_type varchar(30),
+	bed_id        int NOT NULL,
+	PRIMARY KEY (cabin_id)
+);
 
 Create Table Bed(
 	bed_id			int NOT NULL AUTO_INCREMENT,
@@ -61,8 +68,6 @@ Create Table Nurse(
 	last_name			varchar(20),
 	birth_date			date,
 	appointment_date	date,
-	supervisor_id		int,
-	ward_id				int,
 	PRIMARY KEY (nurse_id)
 );
 
@@ -86,6 +91,7 @@ Create Table Prescription(
 	prescription_id    int NOT NULL AUTO_INCREMENT,
 	patient_id		   int NOT NULL,
 	doctor_id			int NOT NULL,
+	date_of_advise      date,
 	PRIMARY KEY(prescription_id)
 );
 
@@ -94,6 +100,17 @@ Create Table Doctor(
 	doctor_id			 int NOT NULL AUTO_INCREMENT,
 	first_name			varchar(20),
 	middle_name			varchar(20),
+	last_name			varchar(20),
+	birth_date			date,
+	appointment_date	date,
+	PRIMARY KEY(doctor_id)
+);
+
+Create Table Doctor(
+	doctor_id			 int NOT NULL AUTO_INCREMENT,
+	first_name			varchar(20),
+	middle_name			varchar(20),
+	designation         varchar(20),
 	last_name			varchar(20),
 	birth_date			date,
 	appointment_date	date,
@@ -145,6 +162,15 @@ CREATE TABLE Test(
 	PRIMARY KEY(test_id)
 );
 
+Select doctor_id AS doctorID, Count(test_id) as testCnt, Count(Distinct prescription_id) as PrescriptionCnt, Count(test_id)*(300) as test_percentage, Count(Distinct prescription_id)*(500) as Prescription_percentage, Count(test_id)*(300)+ Count(Distinct prescription_id)*(500) AS Total
+From Test
+Group By doctor_id
+Order By doctor_id ASC
+
+//
+
+res.render('patients/patientDetailedBill', {pageTitile: 'Patient bill', daysCnt: number_of_days, cost1: total_cost1, presCnt: num_of_prescription, cost2: tot2, med_bill: medicine_bill, testCnt: test_cnt, testBill:test_bill, message: req.flash('message')});
+
 
 //For relationships
 Create Table Admit(
@@ -155,18 +181,19 @@ Create Table Admit(
 
 
 Create Table Med_prescription(
+	med_prescription_id int NOT NULL AUTO_INCREMENT,
 	prescription_id int NOT NULL,
-	 patient_id		 int NOT NULL, 
-	doctor_id		int NOT NULL, 
+	patient_id		 int NOT NULL,
+	doctor_id		int NOT NULL,
 	medicine_id		int NOT NULL,
 	name_med		   varchar(20),
-	 quantity			int,
-	 times_a_day		int,
+	quantity			int,
+	times_a_day		int,
 	morning            varchar(20),
 	noon               varchar(20),
 	evening            varchar(20),
 	med_cost           double,
-	PRIMARY KEY(prescription_id)
+	PRIMARY KEY(med_prescription_id)
 );
 
 
